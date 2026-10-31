@@ -1,0 +1,8 @@
+{
+    "composer.autoloader_path": "%project_root%/.phpactor/autoload.php",
+    "language_server.diagnostic_exclude_paths": [
+        "tests/**/*"
+    ],
+    "language_server_phpstan.enabled": true,
+    "language_server_php_cs_fixer.enabled": true
+}

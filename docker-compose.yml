@@ -1,0 +1,51 @@
+services:
+  humhub:
+    image: humhub/humhub:1.19
+    platform: linux/amd64
+    restart: unless-stopped
+    # Web UI: http://localhost:8081 — sign in as admin / humhub-admin (not the DB credentials below).
+    ports:
+      - "8081:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - humhub-data:/data
+      - .:/data/modules-custom/resource-booking
+    environment:
+      HUMHUB_DEBUG: "true"
+      SERVER_NAME: ":8080"
+      # MariaDB connection settings. These are NOT HumHub login credentials — the web login is
+      # admin / humhub-admin (create further accounts under Administration → Users).
+      HUMHUB_CONFIG__COMPONENTS__DB__DSN: "mysql:host=db;dbname=humhub"
+      HUMHUB_CONFIG__COMPONENTS__DB__USERNAME: "humhub"
+      HUMHUB_CONFIG__COMPONENTS__DB__PASSWORD: "humhub"
+    healthcheck:
+      test: ["CMD", "/app/bin/humhub-simple-healthcheck.sh"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "humhub"
+      MYSQL_USER: "humhub"
+      MYSQL_PASSWORD: "humhub"
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  humhub-data:
+  db-data:

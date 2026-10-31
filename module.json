@@ -1,0 +1,28 @@
+{
+    "id": "resource-booking",
+    "name": "Resource Booking",
+    "description": "Book shared resources such as meeting rooms and equipment. Resources are organised in categories and administrators define the booking rules.",
+    "keywords": [
+        "booking",
+        "resource",
+        "room",
+        "calendar",
+        "reservation"
+    ],
+    "version": "1.0.0",
+    "licence": "AGPL-3.0-or-later",
+    "screenshots": [
+        "screenshot-day-view.png",
+        "screenshot-booking-modal.png",
+        "screenshot-settings.png"
+    ],
+    "authors": [
+        {
+            "name": "mglavind",
+            "role": "Developer"
+        }
+    ],
+    "humhub": {
+        "minVersion": "1.19"
+    }
+}

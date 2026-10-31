@@ -1,0 +1,13 @@
+.DS_Store
+.idea/
+.vscode/
+vendor/
+node_modules/
+dist/
+.tmp*
+.php-cs-fixer.cache
+.phpunit.result.cache
+tests/codeception/_output/*
+!tests/codeception/_output/.gitignore
+tests/codeception/_support/_generated/*
+!tests/codeception/_support/_generated/.gitignore
