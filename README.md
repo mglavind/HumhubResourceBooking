@@ -3,6 +3,26 @@
 An MRBS-inspired resource booking module for HumHub. Users book resources grouped in categories; administrators
 manage the resources, categories and booking rules.
 
+## Overview
+
+Resource Booking adds a shared booking calendar to HumHub for meeting rooms, desks, vehicles, equipment or any
+other bookable resource. Resources are organised into categories, and every logged-in user can see the day's
+bookings together with the person who made them.
+
+Users can create a booking by clicking and dragging across the timeline, or through the regular booking dialog.
+Administrators define the rules — opening hours, allowed weekdays, duration limits, advance booking, buffers,
+quotas and cancellation deadlines — globally and per category. Approval can be required per category, and a
+reminder notification can be sent before a confirmed booking starts.
+
+- Drag-to-book day timeline and an agenda layout
+- Optional approval workflow with a pending approvals page
+- Conflict detection and configurable booking rules
+- Reminders through the HumHub notification system
+- All bookings are visible to everyone; only the owner or a booking manager can edit them
+- Timezone-aware display, no dependencies beyond HumHub
+
+![Resource Booking day view showing the resource timeline and confirmed bookings](resources/screenshot-day-view.png)
+
 - Full documentation: [docs/README.md](docs/README.md)
 - Installation guide: [docs/INSTALLATION.md](docs/INSTALLATION.md)
 - Developer documentation: [docs/DEVELOPER.md](docs/DEVELOPER.md)
